@@ -1,172 +1,377 @@
-🔒 USB PROTECTOR SUITE - GUÍA RÁPIDA 💻
+# 🔒 USB PROTECTOR SUITE - GUÍA RÁPIDA
 
-¿QUÉ ES?
+![GitHub](https://img.shields.io/badge/GitHub-Jose985537-blue?logo=github)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Windows](https://img.shields.io/badge/Windows-10%2B-blue?logo=windows)
 
-Herramientas simples para OCULTAR archivos en USB y MOSTRARLOS después.
+## ¿QUÉ ES?
 
-✅ Rápido ⚡
+Herramientas simples para **OCULTAR** archivos en USB y **MOSTRARLOS** después.
 
-✅ Simple 👍
+- ✅ Rápido
+- ✅ Simple
+- ✅ Seguro
+- ✅ **MÁS AVANZADO que Explorador de Windows**
 
-✅ Seguro 🛡️
+---
 
-✅ MÁS AVANZADO que Explorador de Windows ⚙️
+## 🛠️ TECNOLOGÍAS USADAS
 
-📦 ARCHIVOS QUE NECESITAS
+<img src="https://skillicons.dev/icons?i=windows,powershell,vscode,git,github" />
 
-Archivo
+| Herramienta | Uso |
+|-------------|-----|
+| **Batch (.BAT)** | Scripts principales |
+| **VBScript (.VBS)** | Ejecutor silencioso |
+| **Windows CMD** | Comandos del sistema |
+| **Git** | Control de versiones |
 
-Función
+---
 
-01_PROTECT_MANAGER.BAT
+## 📦 ARCHIVOS QUE NECESITAS
 
-Oculta archivos en USB 👻
+| Archivo | Función | Estado |
+|---------|---------|--------|
+| **01_PROTECT_MANAGER.BAT** | Oculta archivos en USB | ✅ Requerido |
+| **02_REVEAL_ALL.BAT** | Muestra archivos ocultos | ✅ Requerido |
+| **03_SCAN_HIDDEN.BAT** | Busca archivos ocultos | ✅ Requerido |
+| **00_LAUNCHER.VBS** | Ejecutor silencioso | ✅ Requerido |
+| icon.ico | Icono (DE PRUEBA - puedes cambiar) | ⚠️ Opcional |
+| autorun.inf | Autorun (DE PRUEBA - puedes cambiar) | ⚠️ Opcional |
 
-02_REVEAL_ALL.BAT
+---
 
-Muestra archivos ocultos ✨
+## 🚀 PASO 1: COPIAR A USB
 
-03_SCAN_HIDDEN.BAT
+1. Copia **TODOS** estos archivos a tu USB
+2. Copialos en la **RAÍZ** (no en carpetas)
+3. ¡Listo!
 
-Busca archivos ocultos 🔎
+---
 
-icon.ico
+## 🎯 PASO 2: CÓMO USAR
 
-Icono (DE PRUEBA - puedes cambiar) 🖼️
+### Opción A: OCULTAR ARCHIVOS
 
-autorun.inf
+```bash
+1. Haz doble clic en: 01_PROTECT_MANAGER.BAT
+2. Escribe letra de USB (ejemplo: E, F, G)
+3. Presiona Enter
+4. Elige: opción 1
+5. ¡Los archivos se OCULTAN!
+```
 
-Autorun (DE PRUEBA - puedes cambiar) 🧭
+### Opción B: MOSTRAR ARCHIVOS
 
-🚀 PASO 1: COPIAR A USB
+```bash
+1. Haz doble clic en: 02_REVEAL_ALL.BAT
+2. Escribe letra de USB
+3. Presiona Enter
+4. ¡TODOS los archivos aparecen!
+```
 
-Copia TODOS estos archivos a tu USB 💾
+### Opción C: BUSCAR OCULTOS
 
-Cópialos en la RAÍZ (no en carpetas) 📁
+```bash
+1. Haz doble clic en: 03_SCAN_HIDDEN.BAT
+2. El programa BUSCA en todas las USB
+3. Te dice DÓNDE hay ocultos
+4. Presiona tecla para salir
+```
 
-¡Listo! ✅
+---
 
-🎯 PASO 2: CÓMO USAR
+## ⚙️ ¿CÓMO FUNCIONA TÉCNICAMENTE?
 
-Opción A: OCULTAR ARCHIVOS 🙈
+### Los atributos H + S
 
-Haz doble clic en: 01_PROTECT_MANAGER.BAT 🖱️
+El script usa **atributos especiales** del sistema operativo:
 
-Escribe letra de USB (ejemplo: E, F, G) ⌨️
+| Atributo | Significado | Función |
+|----------|-------------|---------|
+| **H** | HIDDEN (Oculto) | El archivo no se ve en Explorador |
+| **S** | SYSTEM (Sistema) | El archivo está protegido |
 
-Presiona Enter ↵️
+### Qué hace:
 
-Elige: opción 1 🔢
+**Para OCULTAR:**
+```batch
+attrib +h +s archivo.txt
+```
+- ➕ AGREGA atributo H = el archivo se oculta
+- ➕ AGREGA atributo S = el archivo se protege
+- Resultado: **El archivo está en la USB pero NO se ve**
 
-¡Los archivos se OCULTAN! 🧙
+**Para MOSTRAR:**
+```batch
+attrib -h -s archivo.txt
+```
+- ➖ QUITA atributo H = deja de ser oculto
+- ➖ QUITA atributo S = deja de estar protegido
+- Resultado: **El archivo vuelve a ser visible**
+
+### ¿Por qué es efectivo?
+
+✅ Los archivos **realmente existen** en la USB
+✅ Windows **simplemente no los muestra**
+✅ Solo quien sabe cómo desocultarlos puede acceder
+✅ Imposible encontrar si no tienes los scripts
+
+---
+
+## 📋 QUÉ HACE CADA SCRIPT
+
+### 01_PROTECT_MANAGER.BAT
+- ✅ Oculta **TODOS** los archivos de tu USB
+- ✅ Los archivos NO se ven en el explorador
+- ✅ **NO se eliminan**, están protegidos
+- ✅ Puedes EXCLUIR archivos (que si se vean)
+
+### 02_REVEAL_ALL.BAT
+- ✅ Muestra **TODOS** los archivos ocultos
+- ✅ Los archivos vuelven a ser visibles
+- ✅ **NO borra nada**
+- ✅ Es lo **opuesto** a ocultar
+
+### 03_SCAN_HIDDEN.BAT
+- ✅ Busca en **TODAS** las USB conectadas
+- ✅ Te dice **DÓNDE** hay archivos ocultos
+- ✅ Te muestra la **RUTA** de los ocultos
+- ✅ **NO cambia nada**, solo busca
+
+### 00_LAUNCHER.VBS
+- ✅ Ejecuta los scripts en **BACKGROUND**
+- ✅ **Sin ventana de consola** visible
+- ✅ Función silenciosa
+
+---
+
+## 🔐 CÓMO EXCLUIR ARCHIVOS
+
+**¿Quiero que algunos archivos SIEMPRE se vean?**
+
+### Pasos:
+
+1. Abre con Bloc de Notas: `01_PROTECT_MANAGER.BAT`
+2. Busca: `CONFIGURACION DE EXCLUSIONES`
+3. Modifica estas líneas:
+   ```batch
+   set "EXCLUSIONS[1]="
+   set "EXCLUSIONS[2]="
+   ```
+4. **Agrega tu archivo:**
+   ```batch
+   set "EXCLUSIONS[1]=MiArchivo.txt"
+   set "EXCLUSIONS[2]=MiCarpeta"
+   ```
+5. **Guarda** el archivo
+6. ¡Listo! Esos archivos **NO se ocultarán**
+
+### Ejemplos:
+
+```batch
+- Un archivo:       set "EXCLUSIONS[1]=documento.docx"
+- Una carpeta:      set "EXCLUSIONS[2]=MisCarpetas"
+- En subcarpeta:    set "EXCLUSIONS[3]=Datos\importante.txt"
+- Varios niveles:   set "EXCLUSIONS[4]=A\B\C\archivo.doc"
+```
+
+---
+
+## ❓ PREGUNTAS FRECUENTES
+
+### P: ¿Se perdieron mis archivos?
+**R:** ¡NO! Los archivos están ocultos. Usa `02_REVEAL_ALL.BAT`
+
+### P: ¿Puedo recuperar archivos ocultos?
+**R:** ¡SÍ! Ejecuta `02_REVEAL_ALL.BAT` y aparecen de nuevo
+
+### P: ¿Es seguro ocultar archivos?
+**R:** ¡SÍ! No borra nada, solo los esconde
+
+### P: ¿Se ven todos ocultos?
+**R:** Sí, a menos que EXCLUYAS algunos
+
+### P: ¿Dónde se guardan?
+**R:** En la misma USB, solo no se ven
+
+### P: ¿Funciona en otra USB?
+**R:** ¡SÍ! Funciona en cualquier USB o disco
+
+### P: ¿Necesito admin?
+**R:** En algunos Windows sí. Abre como Administrador
+
+### P: ¿Este método es diferente a Explorador?
+**R:** ¡SÍ! Es **MÁS AVANZADO:**
+- 📁 Explorador = solo esconde
+- 🔐 Este script = **PROTEGE realmente**
+- 📁 Explorador = cualquiera lo puede mostrar
+- 🔐 Este script = solo tú sabes cómo desocultarlo
+- 📁 Explorador = oculto superficial
+- 🔐 Este script = oculto profesional
+
+---
+
+## ⚡ PASO A PASO RÁPIDO (RESUMEN)
+
+### Para OCULTAR:
+```
+1. Copia los .BAT a USB
+2. Haz doble clic en 01_PROTECT_MANAGER.BAT
+3. Escribe letra de USB
+4. Elige opción: 1
+5. ¡LISTO! Archivos ocultos
+```
+
+### Para MOSTRAR:
+```
+1. Haz doble clic en 02_REVEAL_ALL.BAT
+2. Escribe letra de USB
+3. ¡LISTO! Archivos visibles
+```
+
+---
+
+## 🚨 ERRORES COMUNES
+
+### Error: "No se esperaba : en este momento"
+**Solución:**
+1. Abre Bloc de Notas
+2. Guarda VACÍO como: `test.bat`
+3. Si se crea = problema del archivo
+4. Descarga los .BAT nuevamente
+
+### Error: "Acceso denegado"
+**Solución:**
+1. Abre el .BAT como **ADMINISTRADOR**
+2. Clic derecho > Ejecutar como administrador
+
+### No veo los archivos ocultos
+**Solución:**
+1. Ejecuta `03_SCAN_HIDDEN.BAT` para buscar
+2. Si encuentra = están ocultos
+3. Ejecuta `02_REVEAL_ALL.BAT` para mostrar
+
+---
+
+## 📝 SOBRE LOS ARCHIVOS: icon.ico Y autorun.inf
+
+### ⚠️ ESTOS SON DE PRUEBA
+
+#### icon.ico
+- 🖼️ Es el **icono** que se muestra en la USB
+- 🔄 **PUEDES CAMBIAR** por tu propio icono
+- 📋 Para usar tu icono:
+  ```
+  1. Ten tu archivo .ico
+  2. Renombralo a: icon.ico
+  3. Reemplaza el que viene en la carpeta
+  ```
+
+#### autorun.inf
+- ⚙️ Es la **configuración** de autorun de la USB
+- 🔄 **PUEDES CAMBIAR** por tu propia configuración
+- 📋 Para cambiar:
+  ```
+  1. Abre autorun.inf con Bloc de Notas
+  2. Modifica lo que necesites
+  3. Guarda
+  4. ¡Listo!
+  ```
 
-Opción B: MOSTRAR ARCHIVOS 👀
+#### Nota importante:
+```
+❌ Si no necesitas autorun = puedes ELIMINAR este archivo
+✅ No afecta el funcionamiento de los scripts
+```
 
-Haz doble clic en: 02_REVEAL_ALL.BAT 🖱️
+---
 
-Escribe letra de USB ⌨️
+## ⚠️ ARCHIVOS ESPECIALES
 
-Presiona Enter ↵️
+### "System Volume Information"
+```
+❌ NO es virus
+❌ NO lo toques
+❌ Es del SISTEMA Windows
+✅ Normal que aparezca
+```
 
-¡TODOS los archivos aparecen! 🎉
+---
 
-Opción C: BUSCAR OCULTOS 🧐
+## 💡 SOPORTE RÁPIDO
 
-Haz doble clic en: 03_SCAN_HIDDEN.BAT 🔍
+Si algo no funciona:
 
-El programa BUSCA en todas las USB 🚀
+```
+1. Guarda tu USB (copia de seguridad)
+2. Ejecuta 02_REVEAL_ALL.BAT (muestra todo)
+3. Intenta de nuevo
+```
 
-Te dice DÓNDE hay ocultos 📍
+⚠️ **IMPORTANTE:** ¡Siempre haz copia de seguridad antes!
 
-Presiona tecla para salir 🛑
+---
 
-⚙️ ¿CÓMO FUNCIONA TÉCNICAMENTE?
+## 📁 ESTRUCTURA DEL PROYECTO
 
-Los atributos H + S
+```
+USB_PROTECTOR_SUITE/
+├── 01_PROTECT_MANAGER.BAT      (Ocultar archivos)
+├── 02_REVEAL_ALL.BAT           (Mostrar archivos)
+├── 03_SCAN_HIDDEN.BAT          (Escanear ocultos)
+├── 00_LAUNCHER.VBS             (Ejecutor silencioso)
+├── SCRIPTS_RESOURCES/
+│   ├── icon.ico                (Icono de prueba)
+│   └── autorun.inf             (Config autorun)
+└── DOCS/
+    ├── README.md               (Este archivo)
+    └── README.txt              (Versión texto)
+```
 
-Atributo
+---
 
-Significado
+## 📊 RESUMEN FINAL
 
-Función
+| Acción | Script | Resultado |
+|--------|--------|-----------|
+| 🔒 Ocultar | 01_PROTECT_MANAGER.BAT | Archivos no visibles |
+| 👁️ Mostrar | 02_REVEAL_ALL.BAT | Archivos visibles |
+| 🔍 Buscar | 03_SCAN_HIDDEN.BAT | Detecta ocultos |
+| 🚀 Ejecutar | 00_LAUNCHER.VBS | Sin ventana |
 
-H
+---
 
-HIDDEN (Oculto)
+## 🌐 ENLACES ÚTILES
 
-El archivo no se ve en Explorador 👻
+- 🐙 [GitHub Repository](https://github.com/Jose985537/USB-Protector-Suite)
+- 📖 [Documentación](./DOCS/)
+- 💬 [Issues](https://github.com/Jose985537/USB-Protector-Suite/issues)
 
-S
+---
 
-SYSTEM (Sistema)
+## 📄 LICENCIA
 
-El archivo está protegido 🛡️
+Este proyecto está bajo licencia MIT. Ver detalles en LICENSE.
 
-Acción Ocultar: attrib +h +s archivo.txt
-Acción Mostrar: attrib -h -s archivo.txt
+---
 
-🔐 CÓMO EXCLUIR ARCHIVOS (Whitelist)
+## 👨‍💻 AUTOR
 
-Pasos:
+**Jose985537**
+- 🐙 GitHub: [@Jose985537](https://github.com/Jose985537)
+- 📧 Email: tu_email@gmail.com
 
-Abre con Bloc de Notas: 01_PROTECT_MANAGER.BAT 📝
+---
 
-Busca: CONFIGURACION DE EXCLUSIONES 🎯
+## ⭐ SI TE AYUDÓ, DALE UNA ESTRELLA
 
-Agrega tu archivo (Ejemplo):
+```
+Si este proyecto te fue útil, por favor dale una ⭐ en GitHub
+```
 
-set "EXCLUSIONS[1]=MiArchivo.txt"
-set "EXCLUSIONS[2]=MiCarpeta"
+---
 
+**¡Listo! Ya puedes empezar a usar USB PROTECTOR SUITE** 🚀
 
-Guarda el archivo ✅
-
-¡Listo! Esos archivos NO se ocultarán 🥳
-
-Ejemplo
-
-Código
-
-Un archivo
-
-set "EXCLUSIONS[1]=documento.docx"
-
-Una carpeta
-
-set "EXCLUSIONS[2]=MisCarpetas"
-
-❓ PREGUNTAS FRECUENTES (FAQ)
-
-P: ¿Se perdieron mis archivos? R: ¡NO! 🙅‍♂️ Usa 02_REVEAL_ALL.BAT ✨
-
-P: ¿Puedo recuperar archivos ocultos? R: ¡SÍ! Ejecuta 02_REVEAL_ALL.BAT 🎉
-
-P: ¿Necesito admin? R: En algunos Windows sí. Abre como Administrador 🔑
-
-⚡ PASO A PASO RÁPIDO (RESUMEN)
-
-Acción
-
-Script
-
-Icono
-
-🔒 Ocultar
-
-01_PROTECT_MANAGER.BAT
-
-🙈
-
-👁️ Mostrar
-
-02_REVEAL_ALL.BAT
-
-👀
-
-🔍 Buscar
-
-03_SCAN_HIDDEN.BAT
-
-🔎
-
-¡Listo! Ya puedes empezar a usar USB PROTECTOR SUITE 🚀
+Última actualización: Noviembre 2025
